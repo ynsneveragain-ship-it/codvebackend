@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Rol;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -17,14 +18,14 @@ class UserSeeder extends Seeder
             'rol_id' => $admin->id,
             'primer_nombre' => 'Admin',
             'apellido_paterno' => 'Sistema',
-            'password' => 'admin123',
+            'password' => Hash::make('admin123'),
         ]);
 
         User::updateOrCreate(['correo' => 'visita@gmail.com'], [
             'rol_id' => $visita->id,
             'primer_nombre' => 'Visita',
             'apellido_paterno' => 'Sistema',
-            'password' => 'visita123',
+            'password' => Hash::make('visita123'),
         ]);
     }
 }

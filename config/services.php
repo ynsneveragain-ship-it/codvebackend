@@ -28,6 +28,17 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    // Porkbun: verificacion de disponibilidad de dominios.
+    // Las credenciales se sacan en https://porkbun.com/account/api y NUNCA
+    // viajan al frontend: el navegador llama a nuestra API y es Laravel quien
+    // habla con Porkbun.
+    'porkbun' => [
+        'key' => env('PORKBUN_API_KEY'),
+        'secret' => env('PORKBUN_SECRET_API_KEY'),
+        'url' => env('PORKBUN_API_URL', 'https://api.porkbun.com/api/json/v3'),
+        'timeout' => (int) env('PORKBUN_TIMEOUT', 15),
+    ],
+
     'slack' => [
         'notifications' => [
             'bot_user_oauth_token' => env('SLACK_BOT_USER_OAUTH_TOKEN'),
